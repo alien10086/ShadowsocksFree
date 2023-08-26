@@ -22,10 +22,12 @@ class NetData {
         }
         
         
-        Alamofire.request(URLStr).responseData { (respose) in
+        AF.request(URLStr).responseData { (respose) in
             
-            if respose.result.error == nil {
-                print(respose.data?.count ?? "nil")
+            switch respose.result {
+            case .success(let data):
+                
+                print(data.count ?? "nil")
                 
                 let html = NSString.init(data: respose.data!, encoding: String.Encoding.utf8.rawValue)
                 do {
@@ -59,7 +61,7 @@ class NetData {
                             }
                             
                             try! realm.write({
-                                realm.add(model, update: true)
+                                realm.add(model, update: .all)
                             })
                             success(true)
                         }
@@ -72,14 +74,16 @@ class NetData {
                     print(error)
                     failure(error)
                 }
-            } else {
-                print(respose.result.error ?? "nil")
-                failure(respose.result.error)
+                
+            case .failure(let error):
+                print(error )
+                failure(error)
+                
             }
         }
     }
     
-    class func getSSQRStr(_ num: Int) -> String! {
+    func getSSQRStr(_ num: Int) -> String! {
         let model = realm.objects(Model.self).filter("isNet = true")[num]
         print(model.address!)
         let method: NSString = model.encryption as NSString? ?? "" as NSString
@@ -100,4 +104,6 @@ class NetData {
         
         return retStr.replacingOccurrences(of: "\r\n", with: "")
     }
+    
 }
+

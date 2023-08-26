@@ -1,4 +1,4 @@
-platform:ios,'9.0'
+platform:ios,'16.4'
 use_frameworks!
 inhibit_all_warnings!
 plugin 'cocoapods-acknowledgements'

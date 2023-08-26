@@ -1,6 +1,6 @@
 // Software License Agreement (BSD License)
 //
-// Copyright (c) 2010-2020, Deusty, LLC
+// Copyright (c) 2010-2023, Deusty, LLC
 // All rights reserved.
 //
 // Redistribution and use of this software in source and binary forms,
@@ -17,11 +17,12 @@
 
 #import <CocoaLumberjack/DDLog.h>
 #import <CocoaLumberjack/DDLogMacros.h>
+#import <CocoaLumberjack/DDAbstractDatabaseLogger.h>
 
 #import "DDSampleFileManager.h"
 #import "DDSMocking.h"
 
-static const NSTimeInterval kAsyncExpectationTimeout = 3.0f;
+static const NSTimeInterval kAsyncExpectationTimeout = 3.0;
 
 static DDLogLevel ddLogLevel = DDLogLevelVerbose;
 
@@ -206,6 +207,77 @@ static int const DDLoggerCount = 3;
     [self waitForExpectationsWithTimeout:kAsyncExpectationTimeout handler:^(NSError *timeoutError) {
         XCTAssertNil(timeoutError);
     }];
+}
+
+@end
+
+@interface DDAbstractDatabaseLogger ()
+
+- (void)destroySaveTimer;
+- (void)updateAndResumeSaveTimer;
+- (void)createSuspendedSaveTimer;
+
+@end
+
+@interface DDTestDatabaseLogger : DDAbstractDatabaseLogger
+
+- (void)setUnsavedTime;
+- (void)suspendSaveTimer;
+
+@end
+
+@implementation DDTestDatabaseLogger
+
+- (void)setUnsavedTime
+{
+    _unsavedTime = dispatch_time(DISPATCH_TIME_NOW, 0);
+}
+
+- (void)suspendSaveTimer {
+    if (_saveTimer != NULL && _saveTimerSuspended == 0) {
+        dispatch_suspend(_saveTimer);
+        _saveTimerSuspended = 1;
+    }
+}
+
+@end
+
+@interface DDAbstractDatabaseLoggerTests : XCTestCase
+
+@property (nonatomic) DDTestDatabaseLogger *logger;
+
+@end
+
+@implementation DDAbstractDatabaseLoggerTests
+
+- (void)setUp {
+    [super setUp];
+    self.logger = [[DDTestDatabaseLogger alloc] init];
+}
+
+- (void)tearDown {
+    self.logger = nil;
+    [super tearDown];
+}
+
+- (void)testDestroyDeactivatedSaveTimer {
+    [self.logger createSuspendedSaveTimer];
+    [self.logger destroySaveTimer];
+}
+
+- (void)testDestroyActivatedSaveTimer {
+    [self.logger createSuspendedSaveTimer];
+    [self.logger setUnsavedTime];
+    [self.logger updateAndResumeSaveTimer];
+    [self.logger destroySaveTimer];
+}
+
+- (void)testDestroySuspendedSaveTimer {
+    [self.logger createSuspendedSaveTimer];
+    [self.logger setUnsavedTime];
+    [self.logger updateAndResumeSaveTimer];
+    [self.logger suspendSaveTimer];
+    [self.logger destroySaveTimer];
 }
 
 @end

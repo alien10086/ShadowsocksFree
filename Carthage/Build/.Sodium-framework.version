@@ -2,8 +2,16 @@
   "commitish" : "v1.0.10.1",
   "iOS" : [
     {
+      "hash" : "1acd4ae014234d7573d98ec45eaf9de3dd2f1716828133707275505f6622929b",
       "name" : "Sodium",
-      "hash" : "7a115395450d0e851bddb0e2299c8059ce5588e3825b49a9442065deb9e8fa2e"
+      "container" : "Sodium.xcframework",
+      "identifier" : "ios-arm64"
+    },
+    {
+      "hash" : "736c5d842702093c9e50032666d65f2f4ad6f2aa58065665b611645fe1ad0cca",
+      "name" : "Sodium",
+      "container" : "Sodium.xcframework",
+      "identifier" : "ios-arm64_x86_64-simulator"
     }
   ]
 }

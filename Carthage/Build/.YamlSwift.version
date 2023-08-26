@@ -1,10 +1,19 @@
 {
-  "commitish" : "3.4.3",
+  "commitish" : "3.4.4",
   "iOS" : [
     {
+      "swiftToolchainVersion" : "5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)",
+      "hash" : "42ba4d0f1d996e2f9712bdc03992f700909620ce0bf15412a9be0c2aba34c438",
       "name" : "Yaml",
-      "hash" : "cd158c5710f625e42c449c56496cf6d15e7aa34bcccaee103e7af1e145c88ff6",
-      "swiftToolchainVersion" : "5.2 (swiftlang-1103.0.32.1 clang-1103.0.32.29)"
+      "container" : "Yaml.xcframework",
+      "identifier" : "ios-arm64"
+    },
+    {
+      "swiftToolchainVersion" : "5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)",
+      "hash" : "1fed0199ee9da39df472b448a1eb982a0f32f0f48c2f2488f8745cd9ef693882",
+      "name" : "Yaml",
+      "container" : "Yaml.xcframework",
+      "identifier" : "ios-arm64_x86_64-simulator"
     }
   ]
 }

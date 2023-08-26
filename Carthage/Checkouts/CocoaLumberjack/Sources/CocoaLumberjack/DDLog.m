@@ -1,6 +1,6 @@
 // Software License Agreement (BSD License)
 //
-// Copyright (c) 2010-2020, Deusty, LLC
+// Copyright (c) 2010-2023, Deusty, LLC
 // All rights reserved.
 //
 // Redistribution and use of this software in source and binary forms,
@@ -13,12 +13,9 @@
 //   to endorse or promote products derived from this software without specific
 //   prior written permission of Deusty, LLC.
 
-// Disable legacy macros
-#ifndef DD_LEGACY_MACROS
-    #define DD_LEGACY_MACROS 0
+#if !__has_feature(objc_arc)
+#error This file must be compiled with ARC. Use -fobjc-arc flag (or convert project to ARC).
 #endif
-
-#import <CocoaLumberjack/DDLog.h>
 
 #import <pthread.h>
 #import <objc/runtime.h>
@@ -31,10 +28,12 @@
     #import <AppKit/NSApplication.h>
 #endif
 
-
-#if !__has_feature(objc_arc)
-#error This file must be compiled with ARC. Use -fobjc-arc flag (or convert project to ARC).
+// Disable legacy macros
+#ifndef DD_LEGACY_MACROS
+    #define DD_LEGACY_MACROS 0
 #endif
+
+#import <CocoaLumberjack/DDLog.h>
 
 // We probably shouldn't be using DDLog() statements within the DDLog implementation.
 // But we still want to leave our log statements for any future debugging,
@@ -48,21 +47,6 @@
 #endif
 
 #define NSLogDebug(frmt, ...) do{ if(DD_DEBUG) NSLog((frmt), ##__VA_ARGS__); } while(0)
-
-// Specifies the maximum queue size of the logging thread.
-//
-// Since most logging is asynchronous, its possible for rogue threads to flood the logging queue.
-// That is, to issue an abundance of log statements faster than the logging thread can keep up.
-// Typically such a scenario occurs when log statements are added haphazardly within large loops,
-// but may also be possible if relatively slow loggers are being used.
-//
-// This property caps the queue size at a given number of outstanding log statements.
-// If a thread attempts to issue a log statement when the queue is already maxed out,
-// the issuing thread will block until the queue size drops below the max again.
-
-#ifndef DDLOG_MAX_QUEUE_SIZE
-    #define DDLOG_MAX_QUEUE_SIZE 1000 // Should not exceed INT32_MAX
-#endif
 
 // The "global logging queue" refers to [DDLog loggingQueue].
 // It is the queue that all log statements go through.
@@ -113,10 +97,6 @@ static dispatch_queue_t _loggingQueue;
 // Each logger has it's own associated queue, and a dispatch group is used for synchronization.
 static dispatch_group_t _loggingGroup;
 
-// In order to prevent to queue from growing infinitely large,
-// a maximum size is enforced (DDLOG_MAX_QUEUE_SIZE).
-static dispatch_semaphore_t _queueSemaphore;
-
 // Minor optimization for uniprocessor machines
 static NSUInteger _numProcessors;
 
@@ -156,8 +136,6 @@ static NSUInteger _numProcessors;
 
         void *nonNullValue = GlobalLoggingQueueIdentityKey; // Whatever, just not null
         dispatch_queue_set_specific(_loggingQueue, GlobalLoggingQueueIdentityKey, nonNullValue, NULL);
-
-        _queueSemaphore = dispatch_semaphore_create(DDLOG_MAX_QUEUE_SIZE);
 
         // Figure out how many processors are available.
         // This may be used later for an optimization on uniprocessor machines.
@@ -339,19 +317,7 @@ static NSUInteger _numProcessors;
     // Now assume we have another separate thread that attempts to issue log message G.
     // It should block until log messages A and B have been unqueued.
 
-
-    // We are using a counting semaphore provided by GCD.
-    // The semaphore is initialized with our DDLOG_MAX_QUEUE_SIZE value.
-    // Every time we want to queue a log message we decrement this value.
-    // If the resulting value is less than zero,
-    // the semaphore function waits in FIFO order for a signal to occur before returning.
-    //
-    // A dispatch semaphore is an efficient implementation of a traditional counting semaphore.
-    // Dispatch semaphores call down to the kernel only when the calling thread needs to be blocked.
-    // If the calling semaphore does not need to block, no kernel call is made.
-
     dispatch_block_t logBlock = ^{
-        dispatch_semaphore_wait(_queueSemaphore, DISPATCH_TIME_FOREVER);
         // We're now sure we won't overflow the queue.
         // It is time to queue our log message.
         @autoreleasepool {
@@ -383,21 +349,16 @@ static NSUInteger _numProcessors;
     if (format) {
         va_start(args, format);
 
-        NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
-
-        va_end(args);
-
-        va_start(args, format);
-
         [self log:asynchronous
-          message:message
             level:level
              flag:flag
           context:context
              file:file
          function:function
              line:line
-              tag:tag];
+              tag:tag
+           format:format
+             args:args];
 
         va_end(args);
     }
@@ -417,21 +378,16 @@ static NSUInteger _numProcessors;
     if (format) {
         va_start(args, format);
 
-        NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
-
-        va_end(args);
-
-        va_start(args, format);
-
         [self log:asynchronous
-          message:message
             level:level
              flag:flag
           context:context
              file:file
          function:function
              line:line
-              tag:tag];
+              tag:tag
+           format:format
+             args:args];
 
         va_end(args);
     }
@@ -461,52 +417,24 @@ static NSUInteger _numProcessors;
      format:(NSString *)format
        args:(va_list)args {
     if (format) {
-        NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
-        [self log:asynchronous
-          message:message
-            level:level
-             flag:flag
-          context:context
-             file:file
-         function:function
-             line:line
-              tag:tag];
+        // Nullity checks are handled by -initWithMessage:
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnullable-to-nonnull-conversion"
+        DDLogMessage *logMessage = [[DDLogMessage alloc] initWithFormat:format
+                                                                   args:args
+                                                                  level:level
+                                                                   flag:flag
+                                                                context:context
+                                                                   file:@(file)
+                                                               function:@(function)
+                                                                   line:line
+                                                                    tag:tag
+                                                                options:(DDLogMessageOptions)0
+                                                              timestamp:nil];
+#pragma clang diagnostic pop
+
+        [self queueLogMessage:logMessage asynchronously:asynchronous];
     }
-}
-
-+ (void)log:(BOOL)asynchronous
-    message:(NSString *)message
-      level:(DDLogLevel)level
-       flag:(DDLogFlag)flag
-    context:(NSInteger)context
-       file:(const char *)file
-   function:(const char *)function
-       line:(NSUInteger)line
-        tag:(id)tag {
-    [self.sharedInstance log:asynchronous message:message level:level flag:flag context:context file:file function:function line:line tag:tag];
-}
-
-- (void)log:(BOOL)asynchronous
-    message:(NSString *)message
-      level:(DDLogLevel)level
-       flag:(DDLogFlag)flag
-    context:(NSInteger)context
-       file:(const char *)file
-   function:(const char *)function
-       line:(NSUInteger)line
-        tag:(id)tag {
-    DDLogMessage *logMessage = [[DDLogMessage alloc] initWithMessage:message
-                                                               level:level
-                                                                flag:flag
-                                                             context:context
-                                                                file:[NSString stringWithFormat:@"%s", file]
-                                                            function:[NSString stringWithFormat:@"%s", function]
-                                                                line:line
-                                                                 tag:tag
-                                                             options:(DDLogMessageOptions)0
-                                                           timestamp:nil];
-
-    [self queueLogMessage:logMessage asynchronously:asynchronous];
 }
 
 + (void)log:(BOOL)asynchronous message:(DDLogMessage *)logMessage {
@@ -522,6 +450,9 @@ static NSUInteger _numProcessors;
 }
 
 - (void)flushLog {
+    NSAssert(!dispatch_get_specific(GlobalLoggingQueueIdentityKey),
+             @"This method shouldn't be run on the logging thread/queue that make flush fast enough");
+    
     dispatch_sync(_loggingQueue, ^{ @autoreleasepool {
         [self lt_flush];
     } });
@@ -869,22 +800,6 @@ static NSUInteger _numProcessors;
             } });
         }
     }
-
-    // If our queue got too big, there may be blocked threads waiting to add log messages to the queue.
-    // Since we've now dequeued an item from the log, we may need to unblock the next thread.
-
-    // We are using a counting semaphore provided by GCD.
-    // The semaphore is initialized with our DDLOG_MAX_QUEUE_SIZE value.
-    // When a log message is queued this value is decremented.
-    // When a log message is dequeued this value is incremented.
-    // If the value ever drops below zero,
-    // the queueing thread blocks and waits in FIFO order for us to signal it.
-    //
-    // A dispatch semaphore is an efficient implementation of a traditional counting semaphore.
-    // Dispatch semaphores call down to the kernel only when the calling thread needs to be blocked.
-    // If the calling semaphore does not need to block, no kernel call is made.
-
-    dispatch_semaphore_signal(_queueSemaphore);
 }
 
 - (void)lt_flush {
@@ -1021,22 +936,28 @@ NSString * __nullable DDExtractFileNameWithoutExtension(const char *filePath, BO
     return self;
 }
 
-- (instancetype)initWithMessage:(NSString *)message
-                          level:(DDLogLevel)level
-                           flag:(DDLogFlag)flag
-                        context:(NSInteger)context
-                           file:(NSString *)file
-                       function:(NSString *)function
-                           line:(NSUInteger)line
-                            tag:(id)tag
-                        options:(DDLogMessageOptions)options
-                      timestamp:(NSDate *)timestamp {
+- (instancetype)initWithFormat:(NSString *)messageFormat
+                     formatted:(NSString *)message
+                         level:(DDLogLevel)level
+                          flag:(DDLogFlag)flag
+                       context:(NSInteger)context
+                          file:(NSString *)file
+                      function:(NSString *)function
+                          line:(NSUInteger)line
+                           tag:(id)tag
+                       options:(DDLogMessageOptions)options
+                     timestamp:(NSDate *)timestamp {
+    NSParameterAssert(messageFormat);
+    NSParameterAssert(message);
+    NSParameterAssert(file);
+
     if ((self = [super init])) {
         BOOL copyMessage = (options & DDLogMessageDontCopyMessage) == 0;
-        _message      = copyMessage ? [message copy] : message;
-        _level        = level;
-        _flag         = flag;
-        _context      = context;
+        _messageFormat = copyMessage ? [messageFormat copy] : messageFormat;
+        _message       = copyMessage ? [message copy] : message;
+        _level         = level;
+        _flag          = flag;
+        _context       = context;
 
         BOOL copyFile = (options & DDLogMessageCopyFile) != 0;
         _file = copyFile ? [file copy] : file;
@@ -1045,15 +966,21 @@ NSString * __nullable DDExtractFileNameWithoutExtension(const char *filePath, BO
         _function = copyFunction ? [function copy] : function;
 
         _line         = line;
-        _tag          = tag;
+        _representedObject = tag;
+#if DD_LEGACY_MESSAGE_TAG
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        _tag = tag;
+#pragma clang diagnostic pop
+#endif
         _options      = options;
-        _timestamp    = timestamp ?: [NSDate new];
+        _timestamp    = timestamp ?: [NSDate date];
 
         __uint64_t tid;
         if (pthread_threadid_np(NULL, &tid) == 0) {
             _threadID = [[NSString alloc] initWithFormat:@"%llu", tid];
         } else {
-            _threadID = @"missing threadId";
+            _threadID = @"N/A";
         }
         _threadName   = NSThread.currentThread.name;
 
@@ -1066,17 +993,120 @@ NSString * __nullable DDExtractFileNameWithoutExtension(const char *filePath, BO
         }
 
         // Try to get the current queue's label
-        _queueLabel = [[NSString alloc] initWithFormat:@"%s", dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL)];
-
-        if (@available(macOS 10.10, iOS 8.0, *))
-            _qos = (NSUInteger) qos_class_self();
+        _queueLabel = @(dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL));
+        _qos = (NSUInteger) qos_class_self();
     }
     return self;
+}
+
+- (instancetype)initWithFormat:(NSString *)messageFormat
+                          args:(va_list)messageArgs
+                         level:(DDLogLevel)level
+                          flag:(DDLogFlag)flag
+                       context:(NSInteger)context
+                          file:(NSString *)file
+                      function:(NSString *)function
+                          line:(NSUInteger)line
+                           tag:(id)tag
+                       options:(DDLogMessageOptions)options
+                     timestamp:(NSDate *)timestamp {
+    BOOL copyMessage = (options & DDLogMessageDontCopyMessage) == 0;
+    NSString *format = copyMessage ? [messageFormat copy] : messageFormat;
+    self = [self initWithFormat:format
+                      formatted:[[NSString alloc] initWithFormat:format arguments:messageArgs]
+                          level:level
+                           flag:flag
+                        context:context
+                           file:file
+                       function:function
+                           line:line
+                            tag:tag
+                        options:options | DDLogMessageDontCopyMessage // we already did the copying if needed.
+                      timestamp:timestamp];
+    return self;
+}
+
+- (instancetype)initWithMessage:(NSString *)message
+                          level:(DDLogLevel)level
+                           flag:(DDLogFlag)flag
+                        context:(NSInteger)context
+                           file:(NSString *)file
+                       function:(NSString *)function
+                           line:(NSUInteger)line
+                            tag:(id)tag
+                        options:(DDLogMessageOptions)options
+                      timestamp:(NSDate *)timestamp {
+    self = [self initWithFormat:message
+                      formatted:message
+                          level:level
+                           flag:flag
+                        context:context
+                           file:file
+                       function:function
+                           line:line
+                            tag:tag
+                        options:options
+                      timestamp:timestamp];
+    return self;
+}
+
+NS_INLINE BOOL _nullable_strings_equal(NSString* _Nullable lhs, NSString* _Nullable rhs)
+{
+    if (lhs == nil) {
+        if (rhs == nil)
+            return YES;
+    } else if (rhs != nil && [lhs isEqualToString:(NSString* _Nonnull)rhs])
+        return YES;
+    return NO;
+}
+
+- (BOOL)isEqual:(id)other {
+    // Subclasses of NSObject should not call [super isEqual:] here.
+    // See https://stackoverflow.com/questions/36593038/confused-about-the-default-isequal-and-hash-implements
+    if (other == self) {
+        return YES;
+    } else if (!other || ![other isKindOfClass:[DDLogMessage class]]) {
+        return NO;
+    } else {
+        __auto_type otherMsg = (DDLogMessage *)other;
+        return [otherMsg->_message isEqualToString:_message]
+        && [otherMsg->_messageFormat isEqualToString:_messageFormat]
+        && otherMsg->_level == _level
+        && otherMsg->_flag == _flag
+        && otherMsg->_context == _context
+        && [otherMsg->_file isEqualToString:_file]
+        && _nullable_strings_equal(otherMsg->_function, _function)
+        && otherMsg->_line == _line
+        && (([otherMsg->_representedObject respondsToSelector:@selector(isEqual:)] && [otherMsg->_representedObject isEqual:_representedObject]) || otherMsg->_representedObject == _representedObject)
+        && [otherMsg->_timestamp isEqualToDate:_timestamp]
+        && [otherMsg->_threadID isEqualToString:_threadID] // If the thread ID is the same, the name will likely be the same as well.
+        && [otherMsg->_queueLabel isEqualToString:_queueLabel]
+        && otherMsg->_qos == _qos;
+    }
+}
+
+- (NSUInteger)hash {
+    // Subclasses of NSObject should not call [super hash] here.
+    // See https://stackoverflow.com/questions/36593038/confused-about-the-default-isequal-and-hash-implements
+    return _message.hash
+    ^ _messageFormat.hash
+    ^ _level
+    ^ _flag
+    ^ _context
+    ^ _file.hash
+    ^ _function.hash
+    ^ _line
+    ^ ([_representedObject respondsToSelector:@selector(hash)] ? [_representedObject hash] : (NSUInteger)_representedObject)
+    ^ _timestamp.hash
+    ^ _threadID.hash
+    ^ _queueLabel.hash
+    ^ _qos;
 }
 
 - (id)copyWithZone:(NSZone * __attribute__((unused)))zone {
     DDLogMessage *newMessage = [DDLogMessage new];
 
+    newMessage->_messageFormat = _messageFormat;
     newMessage->_message = _message;
     newMessage->_level = _level;
     newMessage->_flag = _flag;
@@ -1085,7 +1115,13 @@ NSString * __nullable DDExtractFileNameWithoutExtension(const char *filePath, BO
     newMessage->_fileName = _fileName;
     newMessage->_function = _function;
     newMessage->_line = _line;
+    newMessage->_representedObject = _representedObject;
+#if DD_LEGACY_MESSAGE_TAG
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     newMessage->_tag = _tag;
+#pragma clang diagnostic pop
+#endif
     newMessage->_options = _options;
     newMessage->_timestamp = _timestamp;
     newMessage->_threadID = _threadID;
@@ -1094,6 +1130,11 @@ NSString * __nullable DDExtractFileNameWithoutExtension(const char *filePath, BO
     newMessage->_qos = _qos;
 
     return newMessage;
+}
+
+// ensure compatibility even when built with DD_LEGACY_MESSAGE_TAG to 0.
+- (id)tag {
+    return _representedObject;
 }
 
 @end

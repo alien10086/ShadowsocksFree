@@ -1,10 +1,19 @@
 {
-  "commitish" : "0.15.0",
+  "commitish" : "0.0.2",
   "iOS" : [
     {
+      "swiftToolchainVersion" : "5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)",
+      "hash" : "e7290222cc225f885ada702bac504fe930dad93dc981383cd8223b11ca8fa04e",
       "name" : "NEKit",
-      "hash" : "1e91947c6170437e1715f24e6f89372f37e717aec2cdf56f31d01a0678e25797",
-      "swiftToolchainVersion" : "5.2 (swiftlang-1103.0.32.1 clang-1103.0.32.29)"
+      "container" : "NEKit.xcframework",
+      "identifier" : "ios-arm64"
+    },
+    {
+      "swiftToolchainVersion" : "5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)",
+      "hash" : "2efbc1a56e429fa69b72675eb862d1ea2a2a3270963ce53bab28df567923b113",
+      "name" : "NEKit",
+      "container" : "NEKit.xcframework",
+      "identifier" : "ios-arm64_x86_64-simulator"
     }
   ]
 }

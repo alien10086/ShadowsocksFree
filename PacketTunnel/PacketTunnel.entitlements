@@ -14,7 +14,7 @@
 	</array>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.tech.chengluffy.shadowsocksfree</string>
+		<string>group.Guozheng-Li.VpnDemo</string>
 	</array>
 </dict>
 </plist>

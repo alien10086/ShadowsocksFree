@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,22 +14,10 @@
 		1D2A516C20859E4A006E4014 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2A51402085909D006E4014 /* NotificationCenter.framework */; };
 		1D2A516F20859E4A006E4014 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A516E20859E4A006E4014 /* TodayViewController.swift */; };
 		1D2A517620859E4A006E4014 /* SSFTodayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1D2A516B20859E4A006E4014 /* SSFTodayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		1D2C19E9208D83A70077ECD7 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2C19E8208D83A70077ECD7 /* NetworkExtension.framework */; };
 		1D2C19EC208D84C80077ECD7 /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2C19EB208D84C80077ECD7 /* VPNManager.swift */; };
 		1D2C19EE208D85640077ECD7 /* NEKitRule.conf in Resources */ = {isa = PBXBuildFile; fileRef = 1D2C19ED208D85640077ECD7 /* NEKitRule.conf */; };
 		1D2C1A18208D89600077ECD7 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2C1A17208D89600077ECD7 /* PacketTunnelProvider.swift */; };
 		1D2C1A1D208D89600077ECD7 /* PacketTunnel.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1D2C1A15208D89600077ECD7 /* PacketTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		1D2C1A21208D896A0077ECD7 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2C19E8208D83A70077ECD7 /* NetworkExtension.framework */; };
-		1D2C1A23208D89C10077ECD7 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2C1A22208D89C10077ECD7 /* CocoaAsyncSocket.framework */; };
-		1D2C1A25208D89C50077ECD7 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2C1A24208D89C50077ECD7 /* CocoaLumberjack.framework */; };
-		1D2C1A27208D89CC0077ECD7 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2C1A26208D89CC0077ECD7 /* CocoaLumberjackSwift.framework */; };
-		1D2C1A29208D89CE0077ECD7 /* lwip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2C1A28208D89CE0077ECD7 /* lwip.framework */; };
-		1D2C1A2B208D89D30077ECD7 /* MMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2C1A2A208D89D30077ECD7 /* MMDB.framework */; };
-		1D2C1A2D208D89D60077ECD7 /* NEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2C1A2C208D89D60077ECD7 /* NEKit.framework */; };
-		1D2C1A2F208D89DC0077ECD7 /* Sodium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2C1A2E208D89DC0077ECD7 /* Sodium.framework */; };
-		1D2C1A31208D89E10077ECD7 /* tun2socks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2C1A30208D89E10077ECD7 /* tun2socks.framework */; };
-		1D2C1A33208D89E60077ECD7 /* Yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2C1A32208D89E60077ECD7 /* Yaml.framework */; };
-		1D2C1A35208D89EE0077ECD7 /* Resolver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2C1A34208D89EE0077ECD7 /* Resolver.framework */; };
 		1D4055B21FFC7449004EAD04 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4055B11FFC7449004EAD04 /* SettingViewController.swift */; };
 		1D8C45A5209AFD7B00981751 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8C45A4209AFD7B00981751 /* Utils.m */; };
 		1D8D0A291FCBED0200DA470A /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8D0A281FCBED0200DA470A /* HeaderView.swift */; };
@@ -55,6 +43,32 @@
 		2AD282871CD8520800C4655E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AD282851CD8520800C4655E /* LaunchScreen.storyboard */; };
 		6977BBAF827117401CEEDA30 /* Pods_SSFTodayWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A45DAB4B4C36F9D90CC95E64 /* Pods_SSFTodayWidget.framework */; };
 		9D6B82CDAC9CD66BD5DD9513 /* Pods-SSFTodayWidget-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED92785DF061CE45B1510C24 /* Pods-SSFTodayWidget-metadata.plist */; };
+		E662A99B2A99389400B14230 /* MMDB.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E662A98F2A99389400B14230 /* MMDB.xcframework */; };
+		E662A99C2A99389400B14230 /* MMDB.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E662A98F2A99389400B14230 /* MMDB.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E662A99D2A99389400B14230 /* CocoaLumberjackSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E662A9902A99389400B14230 /* CocoaLumberjackSwift.xcframework */; };
+		E662A99E2A99389400B14230 /* CocoaLumberjackSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E662A9902A99389400B14230 /* CocoaLumberjackSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E662A99F2A99389400B14230 /* NEKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E662A9912A99389400B14230 /* NEKit.xcframework */; };
+		E662A9A02A99389400B14230 /* NEKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E662A9912A99389400B14230 /* NEKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E662A9A12A99389400B14230 /* Nimble.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E662A9922A99389400B14230 /* Nimble.xcframework */; };
+		E662A9A22A99389400B14230 /* Nimble.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E662A9922A99389400B14230 /* Nimble.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E662A9A32A99389400B14230 /* Yaml.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E662A9932A99389400B14230 /* Yaml.xcframework */; };
+		E662A9A42A99389400B14230 /* Yaml.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E662A9932A99389400B14230 /* Yaml.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E662A9A52A99389400B14230 /* CocoaLumberjack.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E662A9942A99389400B14230 /* CocoaLumberjack.xcframework */; };
+		E662A9A62A99389400B14230 /* CocoaLumberjack.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E662A9942A99389400B14230 /* CocoaLumberjack.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E662A9A72A99389400B14230 /* CocoaAsyncSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E662A9952A99389400B14230 /* CocoaAsyncSocket.xcframework */; };
+		E662A9A82A99389400B14230 /* CocoaAsyncSocket.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E662A9952A99389400B14230 /* CocoaAsyncSocket.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E662A9A92A99389400B14230 /* Quick.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E662A9962A99389400B14230 /* Quick.xcframework */; };
+		E662A9AA2A99389400B14230 /* Quick.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E662A9962A99389400B14230 /* Quick.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E662A9AB2A99389400B14230 /* Sodium.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E662A9972A99389400B14230 /* Sodium.xcframework */; };
+		E662A9AC2A99389400B14230 /* Sodium.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E662A9972A99389400B14230 /* Sodium.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E662A9AD2A99389400B14230 /* Resolver.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E662A9982A99389400B14230 /* Resolver.xcframework */; };
+		E662A9AE2A99389400B14230 /* Resolver.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E662A9982A99389400B14230 /* Resolver.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E662A9AF2A99389400B14230 /* tun2socks.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E662A9992A99389400B14230 /* tun2socks.xcframework */; };
+		E662A9B02A99389400B14230 /* tun2socks.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E662A9992A99389400B14230 /* tun2socks.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E662A9B12A99389400B14230 /* lwip.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E662A99A2A99389400B14230 /* lwip.xcframework */; };
+		E662A9B22A99389500B14230 /* lwip.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E662A99A2A99389400B14230 /* lwip.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E662A9B42A993AFF00B14230 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2C19E8208D83A70077ECD7 /* NetworkExtension.framework */; };
+		E666F5292A99273C00D7B4DF /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2C19E8208D83A70077ECD7 /* NetworkExtension.framework */; };
 		E989C101DA0FEE619AC011D7 /* Pods-ShadowsocksFree-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7CE7C0EDB3D1CD2109DBF025 /* Pods-ShadowsocksFree-metadata.plist */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +102,28 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E662A9B32A99389500B14230 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E662A9AC2A99389400B14230 /* Sodium.xcframework in Embed Frameworks */,
+				E662A9A22A99389400B14230 /* Nimble.xcframework in Embed Frameworks */,
+				E662A9A82A99389400B14230 /* CocoaAsyncSocket.xcframework in Embed Frameworks */,
+				E662A9A42A99389400B14230 /* Yaml.xcframework in Embed Frameworks */,
+				E662A9B02A99389400B14230 /* tun2socks.xcframework in Embed Frameworks */,
+				E662A99E2A99389400B14230 /* CocoaLumberjackSwift.xcframework in Embed Frameworks */,
+				E662A9A62A99389400B14230 /* CocoaLumberjack.xcframework in Embed Frameworks */,
+				E662A9B22A99389500B14230 /* lwip.xcframework in Embed Frameworks */,
+				E662A9AA2A99389400B14230 /* Quick.xcframework in Embed Frameworks */,
+				E662A9AE2A99389400B14230 /* Resolver.xcframework in Embed Frameworks */,
+				E662A99C2A99389400B14230 /* MMDB.xcframework in Embed Frameworks */,
+				E662A9A02A99389400B14230 /* NEKit.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -104,16 +140,6 @@
 		1D2C1A17208D89600077ECD7 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
 		1D2C1A19208D89600077ECD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D2C1A1A208D89600077ECD7 /* PacketTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PacketTunnel.entitlements; sourceTree = "<group>"; };
-		1D2C1A22208D89C10077ECD7 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/iOS/CocoaAsyncSocket.framework; sourceTree = SOURCE_ROOT; };
-		1D2C1A24208D89C50077ECD7 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = Carthage/Build/iOS/CocoaLumberjack.framework; sourceTree = SOURCE_ROOT; };
-		1D2C1A26208D89CC0077ECD7 /* CocoaLumberjackSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjackSwift.framework; path = Carthage/Build/iOS/CocoaLumberjackSwift.framework; sourceTree = SOURCE_ROOT; };
-		1D2C1A28208D89CE0077ECD7 /* lwip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = lwip.framework; path = Carthage/Build/iOS/lwip.framework; sourceTree = SOURCE_ROOT; };
-		1D2C1A2A208D89D30077ECD7 /* MMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MMDB.framework; path = Carthage/Build/iOS/MMDB.framework; sourceTree = SOURCE_ROOT; };
-		1D2C1A2C208D89D60077ECD7 /* NEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NEKit.framework; path = Carthage/Build/iOS/NEKit.framework; sourceTree = SOURCE_ROOT; };
-		1D2C1A2E208D89DC0077ECD7 /* Sodium.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sodium.framework; path = Carthage/Build/iOS/Sodium.framework; sourceTree = SOURCE_ROOT; };
-		1D2C1A30208D89E10077ECD7 /* tun2socks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = tun2socks.framework; path = Carthage/Build/iOS/tun2socks.framework; sourceTree = SOURCE_ROOT; };
-		1D2C1A32208D89E60077ECD7 /* Yaml.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Yaml.framework; path = Carthage/Build/iOS/Yaml.framework; sourceTree = SOURCE_ROOT; };
-		1D2C1A34208D89EE0077ECD7 /* Resolver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Resolver.framework; path = Carthage/Build/iOS/Resolver.framework; sourceTree = SOURCE_ROOT; };
 		1D325C16211018F70061CC35 /* CommonCrypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CommonCrypto.framework; path = iphoneos/CommonCrypto.framework; sourceTree = "<group>"; };
 		1D4055B11FFC7449004EAD04 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		1D8C45A2209AFD7A00981751 /* ShadowsocksFree-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShadowsocksFree-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -149,6 +175,18 @@
 		9E9628EBA50EBD12EDA813B3 /* Pods-ShadowsocksFree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowsocksFree.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowsocksFree/Pods-ShadowsocksFree.debug.xcconfig"; sourceTree = "<group>"; };
 		A45DAB4B4C36F9D90CC95E64 /* Pods_SSFTodayWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SSFTodayWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC923A7DB871A38B57BD3C23 /* Pods-ShadowsocksFree.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowsocksFree.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowsocksFree/Pods-ShadowsocksFree.release.xcconfig"; sourceTree = "<group>"; };
+		E662A98F2A99389400B14230 /* MMDB.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MMDB.xcframework; path = Carthage/Build/MMDB.xcframework; sourceTree = SOURCE_ROOT; };
+		E662A9902A99389400B14230 /* CocoaLumberjackSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaLumberjackSwift.xcframework; path = Carthage/Build/CocoaLumberjackSwift.xcframework; sourceTree = SOURCE_ROOT; };
+		E662A9912A99389400B14230 /* NEKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = NEKit.xcframework; path = Carthage/Build/NEKit.xcframework; sourceTree = SOURCE_ROOT; };
+		E662A9922A99389400B14230 /* Nimble.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Nimble.xcframework; path = Carthage/Build/Nimble.xcframework; sourceTree = SOURCE_ROOT; };
+		E662A9932A99389400B14230 /* Yaml.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Yaml.xcframework; path = Carthage/Build/Yaml.xcframework; sourceTree = SOURCE_ROOT; };
+		E662A9942A99389400B14230 /* CocoaLumberjack.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaLumberjack.xcframework; path = Carthage/Build/CocoaLumberjack.xcframework; sourceTree = SOURCE_ROOT; };
+		E662A9952A99389400B14230 /* CocoaAsyncSocket.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaAsyncSocket.xcframework; path = Carthage/Build/CocoaAsyncSocket.xcframework; sourceTree = SOURCE_ROOT; };
+		E662A9962A99389400B14230 /* Quick.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Quick.xcframework; path = Carthage/Build/Quick.xcframework; sourceTree = SOURCE_ROOT; };
+		E662A9972A99389400B14230 /* Sodium.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Sodium.xcframework; path = Carthage/Build/Sodium.xcframework; sourceTree = SOURCE_ROOT; };
+		E662A9982A99389400B14230 /* Resolver.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Resolver.xcframework; path = Carthage/Build/Resolver.xcframework; sourceTree = SOURCE_ROOT; };
+		E662A9992A99389400B14230 /* tun2socks.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = tun2socks.xcframework; path = Carthage/Build/tun2socks.xcframework; sourceTree = SOURCE_ROOT; };
+		E662A99A2A99389400B14230 /* lwip.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = lwip.xcframework; path = Carthage/Build/lwip.xcframework; sourceTree = SOURCE_ROOT; };
 		EC464DB1039552D724250DD9 /* Pods-SSFTodayWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSFTodayWidget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SSFTodayWidget/Pods-SSFTodayWidget.debug.xcconfig"; sourceTree = "<group>"; };
 		ED92785DF061CE45B1510C24 /* Pods-SSFTodayWidget-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-SSFTodayWidget-metadata.plist"; path = "Pods/Pods-SSFTodayWidget-metadata.plist"; sourceTree = "<group>"; };
 		F3EE6217980EFE6DDB0BFB41 /* Pods_ShadowsocksFree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShadowsocksFree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,17 +207,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D2C1A27208D89CC0077ECD7 /* CocoaLumberjackSwift.framework in Frameworks */,
-				1D2C1A35208D89EE0077ECD7 /* Resolver.framework in Frameworks */,
-				1D2C1A2D208D89D60077ECD7 /* NEKit.framework in Frameworks */,
-				1D2C1A31208D89E10077ECD7 /* tun2socks.framework in Frameworks */,
-				1D2C1A33208D89E60077ECD7 /* Yaml.framework in Frameworks */,
-				1D2C1A2B208D89D30077ECD7 /* MMDB.framework in Frameworks */,
-				1D2C1A2F208D89DC0077ECD7 /* Sodium.framework in Frameworks */,
-				1D2C1A29208D89CE0077ECD7 /* lwip.framework in Frameworks */,
-				1D2C1A21208D896A0077ECD7 /* NetworkExtension.framework in Frameworks */,
-				1D2C1A23208D89C10077ECD7 /* CocoaAsyncSocket.framework in Frameworks */,
-				1D2C1A25208D89C50077ECD7 /* CocoaLumberjack.framework in Frameworks */,
+				E662A99D2A99389400B14230 /* CocoaLumberjackSwift.xcframework in Frameworks */,
+				E662A9B42A993AFF00B14230 /* NetworkExtension.framework in Frameworks */,
+				E662A9AF2A99389400B14230 /* tun2socks.xcframework in Frameworks */,
+				E662A9A12A99389400B14230 /* Nimble.xcframework in Frameworks */,
+				E662A9A52A99389400B14230 /* CocoaLumberjack.xcframework in Frameworks */,
+				E662A9A72A99389400B14230 /* CocoaAsyncSocket.xcframework in Frameworks */,
+				E662A99F2A99389400B14230 /* NEKit.xcframework in Frameworks */,
+				E662A9B12A99389400B14230 /* lwip.xcframework in Frameworks */,
+				E662A9A32A99389400B14230 /* Yaml.xcframework in Frameworks */,
+				E662A9A92A99389400B14230 /* Quick.xcframework in Frameworks */,
+				E662A9AD2A99389400B14230 /* Resolver.xcframework in Frameworks */,
+				E662A9AB2A99389400B14230 /* Sodium.xcframework in Frameworks */,
+				E662A99B2A99389400B14230 /* MMDB.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,7 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				105E10C3E7420E7532F6CE9D /* Pods_ShadowsocksFree.framework in Frameworks */,
-				1D2C19E9208D83A70077ECD7 /* NetworkExtension.framework in Frameworks */,
+				E666F5292A99273C00D7B4DF /* NetworkExtension.framework in Frameworks */,
 				136E51C1FF6AA0C95DC87EEA /* Pods_ShadowsocksFree.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,17 +251,19 @@
 		1D2C1A08208D87520077ECD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E662A9952A99389400B14230 /* CocoaAsyncSocket.xcframework */,
+				E662A9942A99389400B14230 /* CocoaLumberjack.xcframework */,
+				E662A9902A99389400B14230 /* CocoaLumberjackSwift.xcframework */,
+				E662A99A2A99389400B14230 /* lwip.xcframework */,
+				E662A98F2A99389400B14230 /* MMDB.xcframework */,
+				E662A9912A99389400B14230 /* NEKit.xcframework */,
+				E662A9922A99389400B14230 /* Nimble.xcframework */,
+				E662A9962A99389400B14230 /* Quick.xcframework */,
+				E662A9982A99389400B14230 /* Resolver.xcframework */,
+				E662A9972A99389400B14230 /* Sodium.xcframework */,
+				E662A9992A99389400B14230 /* tun2socks.xcframework */,
+				E662A9932A99389400B14230 /* Yaml.xcframework */,
 				1D325C16211018F70061CC35 /* CommonCrypto.framework */,
-				1D2C1A34208D89EE0077ECD7 /* Resolver.framework */,
-				1D2C1A32208D89E60077ECD7 /* Yaml.framework */,
-				1D2C1A30208D89E10077ECD7 /* tun2socks.framework */,
-				1D2C1A2E208D89DC0077ECD7 /* Sodium.framework */,
-				1D2C1A2C208D89D60077ECD7 /* NEKit.framework */,
-				1D2C1A2A208D89D30077ECD7 /* MMDB.framework */,
-				1D2C1A28208D89CE0077ECD7 /* lwip.framework */,
-				1D2C1A26208D89CC0077ECD7 /* CocoaLumberjackSwift.framework */,
-				1D2C1A24208D89C50077ECD7 /* CocoaLumberjack.framework */,
-				1D2C1A22208D89C10077ECD7 /* CocoaAsyncSocket.framework */,
 				98FF1789151299B223B13359 /* Pods_SSFTodayWidget.framework */,
 				F3EE6217980EFE6DDB0BFB41 /* Pods_ShadowsocksFree.framework */,
 			);
@@ -387,6 +429,7 @@
 				1D2C1A12208D89600077ECD7 /* Frameworks */,
 				1D2C1A13208D89600077ECD7 /* Resources */,
 				1D2C1A36208D8A7B0077ECD7 /* ShellScript */,
+				E662A9B32A99389500B14230 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -407,7 +450,6 @@
 				2AD282771CD8520800C4655E /* Resources */,
 				3F2B30CC7A2EB4D65F7F06C0 /* [CP] Embed Pods Frameworks */,
 				1D2A514F2085909D006E4014 /* Embed App Extensions */,
-				1D2C19EA208D83DF0077ECD7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -432,7 +474,7 @@
 				TargetAttributes = {
 					1D2A516A20859E4A006E4014 = {
 						CreatedOnToolsVersion = 9.3;
-						DevelopmentTeam = N7XNKCS3XY;
+						DevelopmentTeam = V6JP6QL77J;
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -443,7 +485,7 @@
 					};
 					1D2C1A14208D89600077ECD7 = {
 						CreatedOnToolsVersion = 9.3;
-						DevelopmentTeam = N7XNKCS3XY;
+						DevelopmentTeam = V6JP6QL77J;
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -457,7 +499,7 @@
 					};
 					2AD282781CD8520800C4655E = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = N7XNKCS3XY;
+						DevelopmentTeam = V6JP6QL77J;
 						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -535,29 +577,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1D2C19EA208D83DF0077ECD7 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/CocoaAsyncSocket.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjack.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjackSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/lwip.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/MMDB.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/NEKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Sodium.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/tun2socks.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Yaml.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Resolver.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
 		1D2C1A36208D8A7B0077ECD7 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -739,12 +758,16 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 201910061104;
-				DEVELOPMENT_TEAM = N7XNKCS3XY;
+				DEVELOPMENT_TEAM = V6JP6QL77J;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = SSFTodayWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tech.chengluffy.shadowsocksfree.SSFTodayWidget;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = guozhengli.shadowsocksfree.SSFTodayWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -768,12 +791,16 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 201910061104;
-				DEVELOPMENT_TEAM = N7XNKCS3XY;
+				DEVELOPMENT_TEAM = V6JP6QL77J;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = SSFTodayWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tech.chengluffy.shadowsocksfree.SSFTodayWidget;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = guozhengli.shadowsocksfree.SSFTodayWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -795,16 +822,20 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 201910061104;
-				DEVELOPMENT_TEAM = N7XNKCS3XY;
+				DEVELOPMENT_TEAM = V6JP6QL77J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = PacketTunnel/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tech.chengluffy.shadowsocksfree.PacketTunnel;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = guozhengli.shadowsocksfree.PacketTunnel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -827,16 +858,20 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 201910061104;
-				DEVELOPMENT_TEAM = N7XNKCS3XY;
+				DEVELOPMENT_TEAM = V6JP6QL77J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = PacketTunnel/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tech.chengluffy.shadowsocksfree.PacketTunnel;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = guozhengli.shadowsocksfree.PacketTunnel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -893,7 +928,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -945,10 +980,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -966,19 +1002,22 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 201910061104;
-				DEVELOPMENT_TEAM = N7XNKCS3XY;
+				DEVELOPMENT_TEAM = V6JP6QL77J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/iphoneos",
 					"$(PROJECT_DIR)/Frameworks/iphonesimulator",
 				);
 				INFOPLIST_FILE = ShadowsocksFree/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LLVM_LTO = NO;
 				NEW_SETTING = "";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -D DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = tech.chengluffy.shadowsocksfree;
+				PRODUCT_BUNDLE_IDENTIFIER = guozhengli.shadowsocksfree;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ShadowsocksFree/Tool/ShadowsocksFree-Bridging-Header.h";
@@ -1000,19 +1039,22 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 201910061104;
-				DEVELOPMENT_TEAM = N7XNKCS3XY;
+				DEVELOPMENT_TEAM = V6JP6QL77J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/iphoneos",
 					"$(PROJECT_DIR)/Frameworks/iphonesimulator",
 				);
 				INFOPLIST_FILE = ShadowsocksFree/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LLVM_LTO = NO;
 				NEW_SETTING = "";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -D DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = tech.chengluffy.shadowsocksfree;
+				PRODUCT_BUNDLE_IDENTIFIER = guozhengli.shadowsocksfree;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ShadowsocksFree/Tool/ShadowsocksFree-Bridging-Header.h";

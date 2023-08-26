@@ -1,6 +1,6 @@
 // Software License Agreement (BSD License)
 //
-// Copyright (c) 2010-2020, Deusty, LLC
+// Copyright (c) 2010-2023, Deusty, LLC
 // All rights reserved.
 //
 // Redistribution and use of this software in source and binary forms,
@@ -13,10 +13,10 @@
 //   to endorse or promote products derived from this software without specific
 //   prior written permission of Deusty, LLC.
 
-#import "../DDFileLogger+Internal.h"
-#import <CocoaLumberjack/DDFileLogger+Buffering.h>
-
 #import <sys/mount.h>
+
+#import <CocoaLumberjack/DDFileLogger+Buffering.h>
+#import "../DDFileLogger+Internal.h"
 
 static const NSUInteger kDDDefaultBufferSize = 4096; // 4 kB, block f_bsize on iphone7
 static const NSUInteger kDDMaxBufferSize = 1048576; // ~1 mB, f_iosize on iphone7
@@ -41,7 +41,7 @@ static inline NSUInteger p_DDGetDefaultBufferSizeBytesMax(const BOOL max) {
     return max ? kDDMaxBufferSize : kDDDefaultBufferSize;
 }
 
-static NSUInteger DDGetMaxBufferSizeBytes() {
+static NSUInteger DDGetMaxBufferSizeBytes(void) {
     static NSUInteger maxBufferSize = 0;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -50,7 +50,7 @@ static NSUInteger DDGetMaxBufferSizeBytes() {
     return maxBufferSize;
 }
 
-static NSUInteger DDGetDefaultBufferSizeBytes() {
+static NSUInteger DDGetDefaultBufferSizeBytes(void) {
     static NSUInteger defaultBufferSize = 0;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

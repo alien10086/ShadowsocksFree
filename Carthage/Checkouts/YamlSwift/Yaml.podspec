@@ -2,14 +2,14 @@ Pod::Spec.new do |s|
 
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.name          = "Yaml"
-  s.version       = "3.4.3"
+  s.version       = "3.4.4"
   s.summary       = "Load YAML and JSON documents using Swift"
   s.description   = <<-DESC
                  YamlSwift parses a string of YAML document(s) (or a JSON document)
                  and returns a Yaml enum value representing that string.
                    DESC
   s.homepage      = "https://github.com/behrang/YamlSwift"
-  s.swift_version = "4.1"
+  s.swift_version = "5.0"
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.license      = "MIT"
@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
 
   # --- Target xcconfig ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.pod_target_xcconfig = {
-    'SWIFT_VERSION' => '4.1',
+    'SWIFT_VERSION' => '5.0',
     'APPLICATION_EXTENSION_API_ONLY' => 'YES',
   }
 

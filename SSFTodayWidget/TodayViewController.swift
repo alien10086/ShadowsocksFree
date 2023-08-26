@@ -97,7 +97,10 @@ extension TodayViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
         
-        let SSStr = NetData.getSSQRStr((indexPath as NSIndexPath).row)
+//        let SSStr = NetData.getSSQRStr(
+//            ((indexPath as NSIndexPath).row)
+//        )
+        let SSStr = NetData.getSSQRStr(0)
         cell.prefs = SSStr
         cell.label.text = realm.objects(Model.self).filter("isNet = true")[indexPath.row].address
         return cell

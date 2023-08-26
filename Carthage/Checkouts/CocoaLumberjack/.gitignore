@@ -1,11 +1,12 @@
 # Xcode
-#
 .DS_Store
 /.build
 /.swiftpm
 /Packages
 /*.xcodeproj
 xcuserdata/
+
+!Lumberjack.xcodeproj
 
 # Carthage
 Carthage/Build

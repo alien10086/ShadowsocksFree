@@ -6,7 +6,7 @@ Data Source: [ishadowsocks](https://go.ishadowx.net)
 Made by Love.
 
 ```
-carthage update --no-use-binaries --platform ios
+carthage update  --no-use-binaries --use-xcframeworks   --platform ios
 ```
 
 # 2018-4-23
